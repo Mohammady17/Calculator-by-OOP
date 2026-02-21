@@ -6,6 +6,8 @@ namespace myProjects
     {
         static public void Validation()
         {
+            double userNumber1;
+            double userNumber2;
             Console.Clear();
             Console.WriteLine("------------------");
             Console.WriteLine("Calculator Program");
@@ -13,14 +15,10 @@ namespace myProjects
             try
             {
                 Console.Write("Enter number 1:  ");
-                var userNumber1 = Convert.ToDouble(Console.ReadLine());
+                userNumber1 = Convert.ToDouble(Console.ReadLine());
                 Console.Write("Enter number 2:  ");
-                var userNumber2 = Convert.ToDouble(Console.ReadLine());
+                userNumber2 = Convert.ToDouble(Console.ReadLine());
 
-                if (userNumber2 == 0.0)
-                {
-                    userNumber2 = Convert.ToInt32(userNumber2);
-                }
 
                 Console.WriteLine("Options:");
                 Console.WriteLine("\t+ : Add");
@@ -32,6 +30,11 @@ namespace myProjects
                 if (userOption != "+" && userOption != "-" && userOption != "*" && userOption != "/")
                 {
                     Console.WriteLine("That was not a valid option!");
+                    RunAgain();
+                }
+                if (userNumber2 == 0.0 && userOption == "/")
+                {
+                    Console.WriteLine("You may not devide by zero!");
                     RunAgain();
                 }
 
@@ -46,9 +49,7 @@ namespace myProjects
 
         static public void Calculate(double number1, double number2, string option)
         {
-            double result;
-            try
-            {
+                double result;
                 switch (option)
                 {
                     case "+":
@@ -68,13 +69,6 @@ namespace myProjects
                         ShowResult(result);
                         break;
                 }
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine("You may not devide by zero!");
-                RunAgain();
-            }
-
         }
 
         static public void ShowResult(double result)
