@@ -2,6 +2,12 @@ using System;
 
 namespace myProjects
 {
+    /*
+        This is a simple calculator program that allows the user to perform
+         basic arithmetic operations (addition, subtraction, multiplication, and division) on two numbers.
+         The program includes error handling for invalid input and division by zero, and it prompts the user
+         to continue or exit after each calculation.
+    */
     static public class Calculator
     {
         static public void Validation()
